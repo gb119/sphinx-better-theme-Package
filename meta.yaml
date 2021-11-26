@@ -1,0 +1,38 @@
+{% set name = "sphinx-better-theme" %}
+{% set version = "0.1.5" %}
+
+package:
+  name: "{{ name|lower }}"
+  version: "{{ version }}"
+
+source:
+  url: "https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz"
+  sha256: 420570d80d8cab25b35cef2b79619104675777dff5a23deebe9ba2191d48c1ce
+
+build:
+  number: 1
+  script: "{{ PYTHON }} -m pip install . -vv"
+
+requirements:
+  host:
+    - pip
+    - python
+  run:
+    - python
+
+test:
+  imports:
+    - better
+
+about:
+  home: "http://github.com/irskep/sphinx-better-theme"
+  license: LICENSE
+  license_family: OTHER
+  license_file: 
+  summary: "A nice-looking, customizable Sphinx theme"
+  doc_url: 
+  dev_url: 
+
+extra:
+  recipe-maintainers:
+    - your-github-id-here

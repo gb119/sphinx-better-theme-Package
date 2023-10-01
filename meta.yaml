@@ -2,38 +2,40 @@
 {% set version = "0.1.5" %}
 
 package:
-  name: "{{ name|lower }}"
-  version: "{{ version }}"
+  name: {{ name|lower }}
+  version: {{ version }}
 
 source:
-  url: "https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz"
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/sphinx-better-theme-{{ version }}.tar.gz
   sha256: 420570d80d8cab25b35cef2b79619104675777dff5a23deebe9ba2191d48c1ce
 
 build:
   noarch: python
-  number: 1
-  script: "{{ PYTHON }} -m pip install . -vv"
+  script: {{ PYTHON }} -m pip install . -vv
+  number: 0
 
 requirements:
   host:
-    - pip
     - python
+    - better
+    - pip
   run:
     - python
 
 test:
   imports:
     - better
+  commands:
+    - pip check
+  requires:
+    - pip
 
 about:
-  home: "http://github.com/irskep/sphinx-better-theme"
-  license: LICENSE
-  license_family: OTHER
-  license_file: 
-  summary: "A nice-looking, customizable Sphinx theme"
-  doc_url: 
-  dev_url: 
+  home: http://github.com/irskep/sphinx-better-theme
+  summary: A nice-looking, customizable Sphinx theme
+  license: BSD-3-Clause
+  license_file: LICENSE
 
 extra:
   recipe-maintainers:
-    - your-github-id-here
+    - gb119
